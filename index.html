@@ -1,115 +1,302 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- ZMIEŃ: tytuł widoczny na karcie przeglądarki -->
-  <title>Kosmiczna Przystań – nocne obserwacje nieba</title>
-  <style>
-    /* ===== KOLORY – zmień je, aby strona była „Twoja” ===== */
-    :root {
-      --tlo: #0b1026;        /* tło strony */
-      --karta: #1a2140;      /* tło sekcji */
-      --akcent: #facc15;     /* kolor wyróżnień i przycisku */
-      --tekst: #e2e8f0;      /* kolor tekstu */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiedźmin 3: Dziki Gon</title>
 
-    * { box-sizing: border-box; }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--tlo);
-      color: var(--tekst);
-      line-height: 1.6;
-    }
+        body {
+            background: #101010;
+            color: #eee;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+        }
 
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-      background: linear-gradient(135deg, #312e81, #7c3aed);
-      color: white;
-    }
+        header {
+            background: #080808;
+            padding: 22px;
+            text-align: center;
+            border-bottom: 2px solid #a52323;
+        }
 
-    header h1 { margin: 0 0 10px; font-size: 2.4rem; }
-    header p  { margin: 0; font-size: 1.2rem; opacity: 0.9; }
+        header h1 {
+            color: #d32f2f;
+            font-size: 34px;
+            letter-spacing: 2px;
+        }
 
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px 20px;
-    }
+        nav {
+            margin-top: 12px;
+        }
 
-    section {
-      background: var(--karta);
-      border-radius: 14px;
-      padding: 20px 28px;
-      margin-bottom: 20px;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
 
-    h2 { color: var(--akcent); margin-top: 0; }
+        nav a:hover {
+            color: #e53935;
+        }
 
-    ul li { margin-bottom: 6px; }
+        .hero {
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background:
+                linear-gradient(#0009, #000c),
+                url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+        }
 
-    .przycisk {
-      display: inline-block;
-      background: var(--akcent);
-      color: #0b1026;
-      padding: 12px 26px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .hero h2 {
+            font-size: 42px;
+            color: #fff;
+            text-shadow: 2px 2px 8px black;
+        }
 
-    .przycisk:hover { opacity: 0.85; }
+        .hero p {
+            font-size: 19px;
+            max-width: 650px;
+            margin: 15px 0 25px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-  </style>
+        .button {
+            display: inline-block;
+            background: #a52323;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: #d32f2f;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 45px 22px;
+        }
+
+        section h2 {
+            color: #e53935;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            padding: 22px;
+            border: 1px solid #383838;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #d32f2f;
+        }
+
+        .card h3 {
+            color: #f05a5a;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            border-left: 4px solid #a52323;
+            padding: 15px 20px;
+            background: #1b1b1b;
+            font-style: italic;
+        }
+
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 25px;
+            color: #aaa;
+            border-top: 2px solid #a52323;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <!-- ZMIEŃ: nazwa Twojej strony lub wymyślonej firmy -->
-    <h1>Kosmiczna Przystań</h1>
-    <p>Wymyślona firma, która organizuje nocne obserwacje nieba</p>
-  </header>
+    <header>
+        <h1>WIEDŹMIN 3: DZIKI GON</h1>
+        <nav>
+            <a href="#o-grze">O grze</a>
+            <a href="#postacie">Postacie</a>
+            <a href="#swiat">Świat gry</a>
+            <a href="#ciekawostki">Ciekawostki</a>
+        </nav>
+    </header>
 
-  <main>
-    <section>
-      <h2>O firmie</h2>
-      <!-- ZMIEŃ: opisz swoją firmę lub zainteresowania w 2–3 zdaniach. Nie podawaj żadnych danych osobowych! -->
-      <p>Kosmiczna Przystań to miejsce dla wszystkich, którzy lubią patrzeć w gwiazdy.
-         Zabieramy teleskopy tam, gdzie niebo jest najciemniejsze, i pokazujemy planety, Księżyc oraz odległe galaktyki.</p>
-      <p>Ta strona powstała na lekcji informatyki i została opublikowana za darmo w GitHub Pages.</p>
+    <div class="hero">
+        <h2>Przygoda czeka, wiedźminie!</h2>
+        <p>
+            Wejdź do mrocznego świata potworów, magii i trudnych wyborów.
+            Wyrusz razem z Geraltem z Rivii na poszukiwanie Ciri.
+        </p>
+        <a href="#o-grze" class="button">Poznaj grę</a>
+    </div>
+
+    <section id="o-grze">
+        <h2>O grze</h2>
+        <p>
+            Wiedźmin 3: Dziki Gon to fabularna gra RPG stworzona przez
+            polskie studio CD Projekt Red. Premiera gry odbyła się
+            19 maja 2015 roku. Gracz wciela się w Geralta z Rivii,
+            zawodowego łowcę potworów, który przemierza ogromny,
+            otwarty świat i poszukuje swojej przybranej córki Ciri.
+        </p>
+        <br>
+        <p>
+            Gra wyróżnia się rozbudowaną fabułą, ciekawymi zadaniami,
+            systemem walki oraz decyzjami, które mogą wpływać
+            na dalszy przebieg historii.
+        </p>
+    </section>
+
+    <section id="postacie">
+        <h2>Najważniejsze postacie</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Geralt z Rivii</h3>
+                <p>
+                    Główny bohater gry. Białowłosy wiedźmin,
+                    który walczy z potworami za pomocą mieczy,
+                    eliksirów i znaków magicznych.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Ciri</h3>
+                <p>
+                    Przybrana córka Geralta. Posiada niezwykłe
+                    zdolności i jest poszukiwana przez tajemniczy
+                    Dziki Gon.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Yennefer</h3>
+                <p>
+                    Potężna czarodziejka i jedna z najważniejszych
+                    osób w życiu Geralta. Pomaga mu w poszukiwaniach Ciri.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Jaskier</h3>
+                <p>
+                    Wędrowny bard, przyjaciel Geralta, znany
+                    z piosenek, poczucia humoru i licznych przygód.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="swiat">
+        <h2>Świat gry</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Velen</h3>
+                <p>
+                    Ponura kraina pełna bagien, opuszczonych wiosek
+                    i niebezpiecznych stworzeń.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Novigrad</h3>
+                <p>
+                    Wielkie miasto pełne kupców, przestępców,
+                    intryg i tajemnic.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Skellige</h3>
+                <p>
+                    Archipelag wysp zamieszkanych przez wojowników,
+                    żeglarzy i klany inspirowane kulturą nordycką.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ciekawostki">
+        <h2>Ciekawostki</h2>
+
+        <div class="quote">
+            Wiedźmin 3 zdobył wiele nagród i jest uznawany
+            za jedną z najważniejszych gier RPG swojej generacji.
+        </div>
+
+        <br>
+
+        <ul>
+            <li>Gra została stworzona przez polskie studio CD Projekt Red.</li>
+            <li>Świat gry można eksplorować pieszo, konno i łodzią.</li>
+            <li>Geralt korzysta z dwóch mieczy: stalowego i srebrnego.</li>
+            <li>W grze występują liczne zadania poboczne i polowania na potwory.</li>
+            <li>Gra otrzymała dodatki „Serca z kamienia” oraz „Krew i wino”.</li>
+        </ul>
     </section>
 
     <section>
-      <h2>Co oferujemy</h2>
-      <!-- ZMIEŃ: wpisz własne zainteresowania lub usługi firmy -->
-      <ul>
-        <li>Nocne pokazy nieba przez teleskop</li>
-        <li>Warsztaty fotografii gwiazd dla początkujących</li>
-        <li>Mapy nieba i kalendarz zjawisk astronomicznych</li>
-      </ul>
+        <h2>Podsumowanie</h2>
+        <p>
+            Wiedźmin 3: Dziki Gon łączy ciekawą historię, rozległy świat
+            i wymagające walki. Dzięki temu gracze mogą przeżyć
+            wyjątkową przygodę w świecie fantasy inspirowanym
+            twórczością Andrzeja Sapkowskiego.
+        </p>
     </section>
 
-    <section>
-      <h2>Zobacz więcej</h2>
-      <p>Chcesz dowiedzieć się, jak działa hosting, z którego korzysta ta strona?</p>
-      <!-- ZMIEŃ (opcjonalnie): adres, do którego prowadzi przycisk -->
-      <a class="przycisk" href="https://pages.github.com/" target="_blank" rel="noopener">Poznaj GitHub Pages</a>
-    </section>
-  </main>
-
-  <footer>
-    <!-- ZMIEŃ: rok i nazwa strony (bez danych osobowych) -->
-    © 2026  · Strona wykonana na lekcji informatyki
-  </footer>
+    <footer>
+        <p>Strona wykonana na informatykę</p>
+        <p>Temat: Wiedźmin 3: Dziki Gon | 2026</p>
+    </footer>
 
 </body>
 </html>
